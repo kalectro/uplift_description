@@ -1,0 +1,15 @@
+<package>
+
+  <name>uplift_description</name>
+  <version>0.1.0</version>
+  <description>
+     uplift_description
+  </description>
+  <author email="kai@kaifranke.com">Kai Franke</author>
+  <maintainer email="kai@kaifranke.com">Kai Franke</maintainer>
+
+  <license>BSD</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+</package>
