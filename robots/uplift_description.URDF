@@ -1,0 +1,265 @@
+<robot
+  name="uplift_description">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="0.043055 -0.079773 -0.01572"
+        rpy="0 0 0" />
+      <mass
+        value="2.2964" />
+      <inertia
+        ixx="0.10196"
+        ixy="-1.5956E-06"
+        ixz="-8.965E-07"
+        iyy="0.15945"
+        iyz="0.020622"
+        izz="0.16256" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uplift_description/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.2 0.2 0.2 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uplift_description/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="spine">
+    <inertial>
+      <origin
+        xyz="-0.22006 -0.14805 0.0031018"
+        rpy="0 0 0" />
+      <mass
+        value="1.4246" />
+      <inertia
+        ixx="0.029502"
+        ixy="-7.1906E-05"
+        ixz="-0.00046018"
+        iyy="0.016555"
+        iyz="0.0032803"
+        izz="0.035666" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uplift_description/meshes/spine.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.5 0.5 0.5 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uplift_description/meshes/spine.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="spine"
+    type="prismatic">
+    <origin
+      xyz="0.26805 0.065066 0.62434"
+      rpy="1.5708 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="spine" />
+    <axis
+      xyz="0 1 0" />
+    <limit
+      lower="0"
+      upper="0.4"
+      effort="10"
+      velocity="0.02" />
+  </joint>
+  <link
+    name="camera">
+    <inertial>
+      <origin
+        xyz="-0.023624 0.013679 -0.01952"
+        rpy="0 0 0" />
+      <mass
+        value="0.21155" />
+      <inertia
+        ixx="5.5234E-05"
+        ixy="-1.3407E-07"
+        ixz="-5.5967E-07"
+        iyy="0.00093358"
+        iyz="-1.6853E-07"
+        izz="0.00093588" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uplift_description/meshes/camera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uplift_description/meshes/camera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="camera"
+    type="fixed">
+    <origin
+      xyz="-0.32184 -0.25391 -0.02305"
+      rpy="-3.1339 5.3352E-18 1.5708" />
+    <parent
+      link="spine" />
+    <child
+      link="camera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="arm">
+    <inertial>
+      <origin
+        xyz="-0.12018 -0.074337 0.042241"
+        rpy="0 0 0" />
+      <mass
+        value="0.13756" />
+      <inertia
+        ixx="0.00088813"
+        ixy="0.0013812"
+        ixz="-9.21E-05"
+        iyy="0.0022595"
+        iyz="-5.6976E-05"
+        izz="0.0031197" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uplift_description/meshes/arm.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.7 0.7 0.7 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uplift_description/meshes/arm.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="arm"
+    type="revolute">
+    <origin
+      xyz="-0.1869 -0.20563 -0.073014"
+      rpy="1.5708 -1.0148 -1.5708" />
+    <parent
+      link="spine" />
+    <child
+      link="arm" />
+    <axis
+      xyz="0 0 1" />
+    <limit
+      lower="-1.3"
+      upper="1.2"
+      effort="10"
+      velocity="0.5" />
+  </joint>
+  <link
+    name="wrist">
+    <inertial>
+      <origin
+        xyz="0.0046873 0.0017237 0.018"
+        rpy="0 0 0" />
+      <mass
+        value="0.085199" />
+      <inertia
+        ixx="0.00022169"
+        ixy="-7.5283E-06"
+        ixz="-6.5675E-08"
+        iyy="4.4822E-05"
+        iyz="-8.1245E-07"
+        izz="0.00024725" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uplift_description/meshes/wrist.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.9 0.9 0.9 0.2" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://uplift_description/meshes/wrist.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="wrist"
+    type="fixed">
+    <origin
+      xyz="-0.42839 -0.30931 0.055762"
+      rpy="0.40194 1.5708 0" />
+    <parent
+      link="arm" />
+    <child
+      link="wrist" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>
